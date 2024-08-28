@@ -121,30 +121,32 @@ class Store {
 
     products.forEach((product) => {
       const productDiv = document.createElement('div');
-      productDiv.className = 'col-md-4 mb-4'; // Changed from 3 to 4 columns
+      productDiv.className = 'col-md-3 mb-4';
+      // productDiv.classList.add('fixed-height');
+
       row.push(productDiv);
 
       productDiv.innerHTML = `
-      <div class="card shadow features-card" data-id=${product.id}>
-        <div class="card-body d-flex flex-column justify-content-space-evenly">
-          <div class="card-img-top">
-            <img class="card-img-top img-fluid" src=${product.image} alt=${product.title} />
-          </div>
-          <div class="card-title text-center h5 fw-normal text-muted mt-">
-            ${product.title}
-          </div>
-          <div class="card-text text-center">
-            <span class="h4 text-center">${product.price}</span>
-          </div>
-          <div class="features-icons">
-            <div class="f-icons d-flex justify-content-center align-items-center">
-              <span class="tt addBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to cart" data-id=${product.id}>
-                <i class="bi bi-cart-plus rounded-circle text-center me-4" data-bs-toggle="offcanvas" data-bs-target="#cart" aria-controls="offcanvasRight"> Add to Cart</i>
-              </span>
+        <div class="card shadow features-card h-100" data-id=${product.id}>
+            <div class="card-body d-flex flex-column justify-content-between">
+                <div class="card-img-top">
+                    <img class="card-img-top img-fluid" src=${product.image} alt=${product.title} />
+                </div>
+                <div class="card-title text-center h5 fw-normal text-muted mt-auto">
+                    ${product.title}
+                </div>
+                <div class="card-text text-center mb-3">
+                    <span class="h4 text-center">${product.price}</span>
+                </div>
+                <div class="features-icons">
+                    <div class="f-icons d-flex justify-content-center align-items-center mb-auto">
+                        <span class="tt addBtn" data-bs-toggle="tooltip" data-bs-placement="top" title="Add to cart" data-id=${product.id}>
+                            <i class="bi bi-cart-plus rounded-circle text-center me-4"> Add to Cart</i>
+                        </span>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     `;
 
       productDiv.addEventListener('click', () => {
